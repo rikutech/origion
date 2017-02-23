@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Composer Package Service Providers...
+         */
+        Robbo\Presenter\PresenterServiceProvider::class,
+
     ],
 
     /*
