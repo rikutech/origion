@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Robbo\Presenter\PresentableInterface
 {
     use Notifiable;
+
+    public function getPresenter()
+    {
+        return new UserPresenter($this);
+    }
 
     /**
      * The attributes that are mass assignable.

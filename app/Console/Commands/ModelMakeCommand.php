@@ -5,21 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
-class ModelMakeCommand extends\Illuminate\Foundation\Console\ModelMakeCommand
+class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
 {
     public function fire()
     {
-        if (parent::fire() === false) {
-            return;
-        }
-
-        if ($this->option('migration')) {
-            $this->createMigration();
-        }
-
-        if ($this->option('controller') || $this->option('resource')) {
-            $this->createController();
-        }
+        parent::fire();
 
         if ($this->option('presenter')) {
             $this->createPresenter();
@@ -63,14 +53,10 @@ class ModelMakeCommand extends\Illuminate\Foundation\Console\ModelMakeCommand
 
     protected function getOptions()
     {
-        return [
-            ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
+        $options = parent::getOptions();
+        
+        $options[] = ['presenter', 'p', InputOption::VALUE_NONE, 'Create a new presenter for the model.'];
+        return $options;
 
-            ['controller', 'c', InputOption::VALUE_NONE, 'Create a new controller for the model.'],
-
-            ['resource', 'r', InputOption::VALUE_NONE, 'Indicates if the generated controller should be a resource controller'],
-
-            ['presenter', 'p', InputOption::VALUE_NONE, 'Create a new presenter for the model.'],
-        ];
     }
 }
