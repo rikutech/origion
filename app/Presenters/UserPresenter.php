@@ -2,7 +2,7 @@
 
 namespace App\Presenters;
 
-class UserPresenter extends Robbo\Presenter\Presenter
+class UserPresenter extends \Robbo\Presenter\Presenter
 {
 
 }
