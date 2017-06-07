@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use Illuminate\Database\Eloquent\Collection;
+
+class DummyClass extends \App\Repositories\Repository
+{
+	public function __construct()
+	{
+
+	}
+}

@@ -5,8 +5,12 @@ namespace App\Console\Commands;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
-class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
+class EntityMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
 {
+    protected $name = 'make:entity';
+    protected $description = 'Create a new entity class';
+    protected $type = 'Entity';
+
     public function fire()
     {
         parent::fire();
@@ -35,7 +39,7 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Models';
+        return $rootNamespace . '\Entities';
     }
     
     /**
@@ -46,9 +50,9 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
     protected function getStub()
     {
         if ($this->option('presenter')) {
-            return __DIR__ . '/stubs/model-with-presenter.stub';
+            return __DIR__ . '/stubs/entity-with-presenter.stub';
         }
-        return __DIR__ . '/stubs/model.stub';
+        return __DIR__ . '/stubs/entity.stub';
     }
 
     protected function getOptions()
